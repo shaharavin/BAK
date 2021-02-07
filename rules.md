@@ -46,4 +46,4 @@ When the Joker is drawn the game ends.
 
 # Play online
 
-To play a game of BAK online, copy the room template [here][https://playingcards.io/agn7u3] and share the link to the copy room with other players.
+To play a game of BAK online, copy the room template [here](https://playingcards.io/agn7u3) and share the link to the copy room with other players.
