@@ -2,6 +2,8 @@
 #![allow(non_snake_case)]
 #![allow(unused_imports)]
 
+use bzip2::read::BzDecoder;
+use bzip2::Compression;
 use histogram::Histogram;
 use rand::{prelude::StdRng, seq::SliceRandom, thread_rng, Rng, SeedableRng};
 use serde::{Deserialize, Serialize};
@@ -782,15 +784,17 @@ fn eval_against_policy_set<R: Rng + ?Sized>(
     return score / max;
 }
 
-pub fn check_meta_policies() {
-    let mut rng = thread_rng();
-    let mut histogram = Histogram::new();
+type StoredPolicy = Vec<Box<dyn Fn(&Game, usize) -> Option<Buy>>>;
+
+pub fn read_policies() -> (StoredPolicy, StoredPolicy) {
+    let file =
+        std::fs::File::open("records/policies_above_0.3_score_vs_random_policy.jsonl.bz2").unwrap();
+    let decompressor = BzDecoder::new(file);
 
     let mut policies_above_30 = vec![];
     let mut policies_above_50 = vec![];
     {
-        let file = std::fs::File::open("policies_above_0.3_score_vs_random_policy.jsonl").unwrap();
-        for line_or in std::io::BufReader::new(file).lines() {
+        for line_or in std::io::BufReader::new(decompressor).lines() {
             let line = line_or.unwrap();
             let result: PolicyEvalResult = serde_json::from_str(&line).unwrap();
             // eprintln!("score {} from policy: {:?}", result.score, result.policy);
@@ -806,6 +810,14 @@ pub fn check_meta_policies() {
             }
         }
     }
+    (policies_above_30, policies_above_50)
+}
+
+pub fn check_meta_policies() {
+    let mut rng = thread_rng();
+    let mut histogram = Histogram::new();
+
+    let (policies_above_30, policies_above_50) = read_policies();
 
     eprintln!(
         "{} policies >= 30%, {} policies >= 50%",

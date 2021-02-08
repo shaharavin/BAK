@@ -1,6 +1,6 @@
 [package]
 name = "bak_card_game"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["houeland"]
 edition = "2018"
 
@@ -17,4 +17,5 @@ harness = false
 rand = "0.8.2"
 serde = { version = "1.0.121", features = ["derive"] }
 serde_json = "1.0.61"
-histogram = "0.6"
+histogram = "0.6.9"
+bzip2 = "0.4.1"
