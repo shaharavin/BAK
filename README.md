@@ -8,4 +8,4 @@ Safety is treated as a commons, adding a potential failure of [cooperation](http
 
 ## AI
 
-We also provide a framework that searches for strategies through search.
+We also provide a framework that searches for strategies.
