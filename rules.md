@@ -43,7 +43,3 @@ Buying a card has the following effects:
 When the Joker is drawn the game ends. 
 - If all Kings have been bought, the player with the highest total sum of card values in their hand wins. 
 - If not all Kings have been bought, everyone loses.
-
-# Play online
-
-To play a game of BAK online, copy the room template [here](https://playingcards.io/agn7u3) and share the link to the copy room with other players.
