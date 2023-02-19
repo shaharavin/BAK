@@ -1,5 +1,13 @@
 # BAK Rules
 
+## Nubmer of players
+
+2-4 players.
+
+## Lenght of play
+
+10-20 minutes.
+
 ## Deck
 
 Normal full 4 suit card deck, with one joker.
