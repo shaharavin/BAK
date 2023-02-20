@@ -1,6 +1,6 @@
 # BAK Rules
 
-## Nubmer of players
+## Number of players
 
 2-4 players.
 
