@@ -4,7 +4,7 @@
 
 2-4 players.
 
-## Lenght of play
+## Length of play
 
 10-20 minutes.
 
